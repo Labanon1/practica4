@@ -23,19 +23,29 @@ public class AnalizadorLexico {
     }
 
     public boolean hasMoreTokens(){
-
+        if (this.automata.getNumEstados()>this.historico.size()){
+            return true;
+        }
+        return false;
     }
+
     public List<Token> getHistorico(){
         return this.historico;
     }
-    public void reset(){
 
+    public void reset(){
+        this.posActual=0;
+        this.historico=new ArrayList();
     }
     public void nuevaCadena(int[] c){
-
+        this.cadena=c;
+        this.posActual=0;
+        this.historico.clear();
     }
     public void finalizarAnalisis(){
-
+        this.cadena=null;
+        this.posActual=0;
+        this.historico.clear();
     }
 
 
